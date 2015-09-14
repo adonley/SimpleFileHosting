@@ -60,6 +60,7 @@ public class Uploader extends HttpServlet
         }
         finally
         {
+            req.getRequestDispatcher("/").forward(req, resp);
             if (out != null)
                 out.close();
             if (fileContent != null)
@@ -67,9 +68,6 @@ public class Uploader extends HttpServlet
             if (writer != null)
                 writer.close();
         }
-
-        resp.setStatus(resp.SC_OK);
-        resp.sendRedirect("/");
     }
 
     private String getFileName(final Part part)
