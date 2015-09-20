@@ -5,7 +5,23 @@
          version="3.1">
 
     <display-name>Team Infamous</display-name>
-    <!-- Front Page -->
+	<listener>
+		<listener-class>org.apache.shiro.web.env.EnvironmentLoaderListener</listener-class>
+	</listener>
+	<filter>
+		<filter-name>securityFilter</filter-name>
+		<filter-class>org.apache.shiro.web.servlet.IniShiroFilter</filter-class>
+    <!-- no init-param means load the INI config from classpath:shiro.ini -->
+	</filter>
+	<filter-mapping>
+		<filter-name>securityFilter</filter-name>
+		<url-pattern>/*</url-pattern>
+		<dispatcher>REQUEST</dispatcher>
+		<dispatcher>FORWARD</dispatcher>
+		<dispatcher>INCLUDE</dispatcher>
+		<dispatcher>ERROR</dispatcher>
+	</filter-mapping>
+		<!-- Front Page -->
     <servlet>
         <servlet-name>
             Front
@@ -41,18 +57,6 @@
         </url-pattern>
     </servlet-mapping>
 
-    <security-constraint>
-        <web-resource-collection>
-            <web-resource-name>FilesView</web-resource-name>
-            <url-pattern>/files</url-pattern>
-            <http-method>GET</http-method>
-            <http-method>POST</http-method>
-        </web-resource-collection>
-        <auth-constraint>
-            <role-name>user</role-name>
-        </auth-constraint>
-    </security-constraint>
-
 
     <!-- Upload Interface -->
     <servlet>
@@ -71,17 +75,7 @@
             /upload
         </url-pattern>
     </servlet-mapping>
-    <security-constraint>
-        <web-resource-collection>
-            <web-resource-name>Upload</web-resource-name>
-            <url-pattern>/upload.jsp</url-pattern>
-            <http-method>GET</http-method>
-            <http-method>POST</http-method>
-        </web-resource-collection>
-        <auth-constraint>
-            <role-name>user</role-name>
-        </auth-constraint>
-    </security-constraint>
+   
 
     <!-- Uploader Servlet to Handle Uploads -->
     <servlet>
@@ -132,17 +126,6 @@
     <welcome-file-list>
         <welcome-file>index</welcome-file>
     </welcome-file-list>
-
-
-
-    <login-config>
-        <auth-method>FORM</auth-method>
-        <realm-name>file</realm-name>
-        <form-login-config>
-            <form-login-page>/login.jsp</form-login-page>
-            <form-error-page>/loginError.jsp</form-error-page>
-        </form-login-config>
-    </login-config>
 
 
 </web-app>
