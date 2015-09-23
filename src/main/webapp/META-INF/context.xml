@@ -1,0 +1,22 @@
+<Context>
+
+    <Resource name="jdbc/teaminf"
+
+              auth="Container"
+
+              type="javax.sql.DataSource"
+
+              username="kyle"
+
+              password="barry1"
+
+              driverClassName="com.mysql.jdbc.Driver"
+
+              url="jdbc:mysql:/localhost:3306/teaminf"
+
+              maxActive="15"
+
+              maxIdle="3"/>
+
+</Context>
+

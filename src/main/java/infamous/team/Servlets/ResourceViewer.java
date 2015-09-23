@@ -20,9 +20,10 @@ public class ResourceViewer extends HttpServlet
         List<String> files = new LinkedList<String>();
 
         File resourcesDir = new File(Config.fileDirectory);
-
-        for(File f : resourcesDir.listFiles())
+       // if (resourcesDir.exists())
+        for(File f : resourcesDir.listFiles()) {
             files.add(f.getName());
+        }
 
         req.setAttribute("files",files);
         RequestDispatcher dispatcher = getServletContext().getRequestDispatcher("/viewfiles.jsp");

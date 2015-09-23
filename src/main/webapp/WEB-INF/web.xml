@@ -5,8 +5,41 @@
          version="3.1">
 
     <display-name>Team Infamous</display-name>
-
+	<listener>
+		<listener-class>org.apache.shiro.web.env.EnvironmentLoaderListener</listener-class>
+	</listener>
+	<filter>
+		<filter-name>securityFilter</filter-name>
+		<filter-class>org.apache.shiro.web.servlet.IniShiroFilter</filter-class>
+    <!-- no init-param means load the INI config from classpath:shiro.ini -->
+	</filter>
+	<filter-mapping>
+		<filter-name>securityFilter</filter-name>
+		<url-pattern>/*</url-pattern>
+		<dispatcher>REQUEST</dispatcher>
+		<dispatcher>FORWARD</dispatcher>
+		<dispatcher>INCLUDE</dispatcher>
+		<dispatcher>ERROR</dispatcher>
+	</filter-mapping>
+		<!-- Front Page -->
+    <servlet>
+        <servlet-name>
+            Front
+        </servlet-name>
+        <servlet-class>
+            infamous.team.Servlets.FrontPosts
+        </servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>
+            Front
+        </servlet-name>
+        <url-pattern>
+            /index
+        </url-pattern>
+    </servlet-mapping>
     <!-- Files View -->
+    
     <servlet>
         <servlet-name>
             FilesView
@@ -20,9 +53,10 @@
             FilesView
         </servlet-name>
         <url-pattern>
-            /index
+            /files
         </url-pattern>
     </servlet-mapping>
+
 
     <!-- Upload Interface -->
     <servlet>
@@ -41,6 +75,7 @@
             /upload
         </url-pattern>
     </servlet-mapping>
+   
 
     <!-- Uploader Servlet to Handle Uploads -->
     <servlet>
@@ -91,5 +126,6 @@
     <welcome-file-list>
         <welcome-file>index</welcome-file>
     </welcome-file-list>
+
 
 </web-app>
