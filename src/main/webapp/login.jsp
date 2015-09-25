@@ -10,7 +10,8 @@
       <div class="col-md-5">
         <form name="login-form" method="POST" action="">
             <input class="login-box" placeholder="Username" type="text" name="username">
-            <input class="login-box" placeholder="password" type="password" name="password">
+            <input class="login-box" placeholder="password" type="password" name="password"><br>
+            <input type="checkbox" name="remember">Remember Me<br>
             <input class="login-button" type="submit" value="Submit" />
         </form>
       </div>

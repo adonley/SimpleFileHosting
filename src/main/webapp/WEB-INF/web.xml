@@ -21,7 +21,8 @@
 		<dispatcher>INCLUDE</dispatcher>
 		<dispatcher>ERROR</dispatcher>
 	</filter-mapping>
-		<!-- Front Page -->
+
+    <!-- Front Page -->
     <servlet>
         <servlet-name>
             Front
@@ -38,8 +39,8 @@
             /index
         </url-pattern>
     </servlet-mapping>
+
     <!-- Files View -->
-    
     <servlet>
         <servlet-name>
             FilesView
